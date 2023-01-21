@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void wypisz_na_ekranie(string zdanie) {
+	cout << zdanie << endl;
+}
+int main()
+{
+
+	vector<int> vect = { 1,2,3,4,5,6,7,8,9,10 };
+	for (int i = 0; i < vect.size(); i++) {
+		if (vect[i] % 2 == 0) {
+			cout << vect[i]<<endl;
+		}
+	}
+
+	vector<int> vect1 = { 1,2,3,4,5,6,7,8,9,10 };
+	
+	for_each(vect1.begin(), vect1.end(), [](int i) {
+		if (i % 2 == 0) {
+			cout << i;
+		}
+		});
+	vector<string> vect2{ "ala", "kot", "ma", "anna", "michal","maria", "algebra" };
+	for (int i = 0; i < vect2.size(); i++) {
+		cout << vect2[i] << " : " <<vect2[i].length()<<endl;
+
+	}
+
+}
