@@ -67,20 +67,21 @@ Utwórz następujące widoki korzystając z  utworzonych  tabel. Nazwę widoków
 
 
 5. Podającą procentowy udział powierzchni działek poszczególnych rodzajów
-
-	
+select udzial*100 from dzialki group by rodzaj dzialki
+	group by trzeba uzyć 
 
 6. Podającą dane właścicieli największej działki
 
+		select * from wlasciciele where max(powierzchnia);
 		
 
 7. Zmieniającą powierzchnię z hektarów na ary (jeden hektar ma 100 arów)
 
-	
+	select powierzchnia*100 as "powierzchnia w arach"
 
 8. Podającą dane działek, dla których suma udziałów przekracza 1 
 
-	
+	select * from dzialki where udzial>1
 
 9. Dopisz swoje dane do właścicieli i przydziel sobie jedną z wolnych działek z udziałem =(liczba liter w imieniu)/(liczba liter w imieniu+liczba liter w nazwisku)
 
