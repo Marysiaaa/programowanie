@@ -1,0 +1,89 @@
+
+Wszystkie kody  tworzące tabele, dodające klucze główne i obce, tworzące widoki, i zmieniające dane w tabelach zapisz pod poleceniami w tym pliku. Po zakończeniu zapisz plik i prześlij na swoje konto na serwerze bad.uwm.edu.pl (WinSCP).
+ 
+
+Utwórz tabelę Student z kolumnami: NrAlbumu,Nazwisko,Imiona,Grupa i wpisz do niej swoje dane.
+  
+Na podstawie plików:
+
+danewlasciciele.txt, 
+
+	CREATE TABLE wlascicieleBK(Wlasciciel varchar(100) , Miasto varchar(100) , Adres varchar(100), DataUrodz varchar(100), Pesel varchar(11));
+	INSERT INTO wlascicieleBK (Wlasciciel , Miasto , Adres , DataUrodz , Pesel )
+	VALUES
+	('Makowiecki Tezeusz', 'Barczewo', 'Prusa 17/12', '1939-05-03', '39050317350')...
+
+danedzialki.txt, 
+
+	CREATE TABLE dzialkiBK (NrDzialki varchar(100) PRIMARY KEY,Rodzaj varchar(100),NrMapy varchar(100),Powierzchnia varchar(100));
+	INSERT INTO dzialkiBK (NrDzialki,Rodzaj,NrMapy,Powierzchnia)
+	VALUES
+	('1/1', 'Grunty Orne', 15, 4.14)...
+
+danemapy.txt, 
+
+	CREATE TABLE mapyBK (NrMapy varchar(100) PRIMARY KEY, Polozenie varchar(100));
+	INSERT INTO mapy (NrMapy, Polozenie)
+	VALUES
+	(6,'Stare Miasto')...
+
+
+danewlasnosc.txt
+
+	CREATE TABLE wlasnoscBK (NrDzialki varchar(100), Pesel varchar(11), Udzial varchar(100));
+	INSERT INTO wlasnoscBK (NrDzialki, Pesel, Udzial)
+	VALUES 
+	('1/1', '42101615501', 0.5000)...
+
+ utwórz tabele (pierwszy wiersz pliku podaje nazwy poszczególnych kolumn). W nazwach tabel umieść na końcu swoje inicjały 
+(np. w moim przypadku dzialkiSD) , a następnie wczytaj dane z następnych wierszy pliku do tej tabeli.
+
+ODP:    CREATE TABLE Student (NrAlbumu varchar(100), Nazwisko varchar(100), Imiona varchar(100), Grupa varchar(100));
+	INSERT INTO Student(NrAlbumu, Nazwisko, Imiona, Grupa)
+	VALUES
+	('170113', 'Klas', 'Bartosz', 'Gr 5 NS');
+
+Utwórz klucze główne tabelach (kolumny oznaczone (PK) sa kluczami, w tabeli wlasnosc klucz składa się z dwóch kolumn (PPK)
+Utwórz klucze obce w tabelach oznaczone (FK) odnoszą sie do tabel w których klucze główne maja tę sama nazwę.
+
+Utwórz następujące widoki korzystając z  utworzonych  tabel. Nazwę widoków utwórz wg następującego wzorca: WIN_nrpolecenia I oznacza pierwszą literę imienia, N pierwszą literę nazwiska  np. w moim przypadku nazwa widoku do polecenia nr 4 WSD_4.
+
+
+1. Podającą dane działek łącznie z położeniem, których wielkość jest większa od dwóch ostatnich cyfr Twojego numeru albumu podzielonych przez 10
+
+	SELECT * FROM dzialkiBK
+	WHERE Powierzchnia > 1.3
+
+2. Podającą wszystkie dane działek które są w posiadaniu właścicieli , których nazwisko zaczyna się na taką samą literę jak Twoje nazwisko.
+
+	
+
+3. Podającą działki które nie mają właścicieli i mające rodzaj budowlana
+
+	
+
+4. Podającą miasta, oraz łączną powierzchnię działek dla właścicieli z tych miast z uwzględnieniem udziału (tzn. nie zawsze właściciel ma całą działkę)
+	
+
+
+5. Podającą procentowy udział powierzchni działek poszczególnych rodzajów
+
+	
+
+6. Podającą dane właścicieli największej działki
+
+		
+
+7. Zmieniającą powierzchnię z hektarów na ary (jeden hektar ma 100 arów)
+
+	
+
+8. Podającą dane działek, dla których suma udziałów przekracza 1 
+
+	
+
+9. Dopisz swoje dane do właścicieli i przydziel sobie jedną z wolnych działek z udziałem =(liczba liter w imieniu)/(liczba liter w imieniu+liczba liter w nazwisku)
+
+	INSERT INTO wlascicieleBK (Wlasciciel , Miasto , Adres , DataUrodz , Pesel )
+	VALUES ('Klas Bartosz', ' Ciechanów', 'pułtuska 21/37', '2002-05-07', '72845362847' );
+
